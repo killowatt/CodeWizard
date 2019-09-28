@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
         //grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.05f, groundLayer).collider;
         grounded = Physics2D.OverlapBox(transform.position + Vector3.down, new Vector2(0.8f, 0.05f), 0.0f, groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down * 1.05f);
+        //Debug.DrawRay(transform.position, Vector2.down * 1.05f);
         // BORROWED CODE ##################################
         //bool wasGrounded = grounded;
         //RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.down * 1.0f, Vector2.down, 0.001f);
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         if (grounded && Input.GetKey(KeyCode.W))
         {
             grounded = false;
-            rb.AddForce(new Vector2(0, 750.0f));
+            rb.AddForce(new Vector2(0, 1000.0f));
         }
         //float horizontal = Input.GetAxis("Horizontal");
         //float vertical = 0.0f;
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
 
         //rb.AddForce(new Vector2(horizontal * 16.0f, vertical));
     }
+
     // Update is called once per frame
     void Update()
     {
