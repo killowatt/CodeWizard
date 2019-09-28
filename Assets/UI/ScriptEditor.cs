@@ -9,11 +9,15 @@ public class ScriptEditor : MonoBehaviour
     public string fileName = "New Spell";
     public string stringToEdit = "";
 
+    public bool editable = true; //check for writeability to a spell
+
     //sry connor
     public Interactable calback;
 
     void OnGUI()
     {
+        if (!editable)
+            return;
         TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
 
         // Make a multiline text area that modifies stringToEdit.
@@ -33,6 +37,8 @@ public class ScriptEditor : MonoBehaviour
 
     public void SaveSpell()
     {
+        if (!editable)
+            return;
         //get path of file
         string path = Application.dataPath + "/UI/Spells/" + fileName + ".txt";
         Debug.Log(path);
