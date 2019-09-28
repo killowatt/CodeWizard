@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         //float groundRad = 0.2f;
 
         //grounded = Physics2D.Raycast(transform.position, Vector2.down, 1.05f, groundLayer).collider;
-        grounded = Physics2D.OverlapBox(transform.position + Vector3.down, new Vector2(0.8f, 0.05f), 0.0f, groundLayer);
+        grounded = Physics2D.OverlapBox(transform.position + Vector3.down, new Vector2(0.75f, 0.05f), 0.0f, groundLayer);
         //Debug.DrawRay(transform.position, Vector2.down * 1.05f);
         // BORROWED CODE ##################################
         //bool wasGrounded = grounded;
