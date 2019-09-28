@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ScriptEditor : MonoBehaviour
 {
     public GameObject SubPanel;
+    public string fileName = "New Spell";
     public string stringToEdit = "";
 
     void OnGUI()
@@ -18,9 +20,25 @@ public class ScriptEditor : MonoBehaviour
             stringToEdit = stringToEdit.Insert(editor.selectIndex, "\t");
         }
         stringToEdit = GUI.TextArea(new Rect(550, 80, 200, 325), stringToEdit, 500);
+        fileName = GUI.TextField(new Rect(550, 60, 75, 20), fileName, 500);
+
 
 
         //Debug.Log(editor.selectIndex);
+
+    }
+
+    public void SaveSpell()
+    {
+        //get path of file
+        string path = Application.dataPath + "/UI/Spells/" + fileName + ".txt";
+        Debug.Log(path);
+        //check if file exists
+        if (!File.Exists(path))
+        {
+            File.WriteAllText(path, stringToEdit);
+        }
+
 
     }
 
