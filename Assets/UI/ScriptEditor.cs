@@ -14,23 +14,32 @@ public class ScriptEditor : MonoBehaviour
     //sry connor
     public Interactable calback;
 
+    public static Vector3 GUIScale()
+    {
+        float normalWidth = 1600;
+        float normalHeight = 900;
+        return new Vector3(Screen.width / normalWidth, Screen.height / normalHeight, 1);
+    }
+
+    public static Matrix4x4 GetGUIMatrix()
+    {
+        return Matrix4x4.TRS(Vector3.zero, Quaternion.identity, GUIScale());
+    }
+
     void OnGUI()
     {
-        if (!editable)
-            return;
+        GUI.matrix = GetGUIMatrix();
+
         TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
 
         // Make a multiline text area that modifies stringToEdit.
-        if (Event.current.Equals(Event.KeyboardEvent(KeyCode.Tab.ToString())))
+        if (editable && Event.current.Equals(Event.KeyboardEvent(KeyCode.Tab.ToString())))
         {
             stringToEdit = stringToEdit.Insert(editor.selectIndex, "\t");
         }
-        stringToEdit = GUI.TextArea(new Rect(550, 80, 200, 325), stringToEdit, 500);
-        fileName = GUI.TextField(new Rect(550, 60, 75, 20), fileName, 500);
-
-
-
-
+        stringToEdit = GUI.TextArea(new Rect(1175, 190, 400, 700), stringToEdit, 500);
+        fileName = GUI.TextField(new Rect(1175, 145, 200, 40), fileName, 500);
+        
     }
 
     public void SaveSpell( GameObject spellbook)

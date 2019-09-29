@@ -633,8 +633,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 163.4, y: 376.50003}
-  m_SizeDelta: {x: 97.3, y: 30}
+  m_AnchoredPosition: {x: 150, y: 350.53}
+  m_SizeDelta: {x: 97.3, y: 41.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251451594
 MonoBehaviour:
@@ -1371,6 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 972344716}
+  Smoothing: 0.05
 --- !u!1 &673589971
 GameObject:
   m_ObjectHideFlags: 0
@@ -10453,6 +10454,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1943674970}
+    - target: {fileID: 2856430813823671383, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671383, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.7108
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671383, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1385.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671383, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1609.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671382, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671382, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671382, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856430813823671382, guid: 77373034d819e4740afaca12ad7db677,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77373034d819e4740afaca12ad7db677, type: 3}
 --- !u!224 &6689657849572404349 stripped
