@@ -21,7 +21,6 @@ public class ScriptEditor : MonoBehaviour
         TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
 
         // Make a multiline text area that modifies stringToEdit.
-        // Make a multiline text area that modifies stringToEdit.
         if (Event.current.Equals(Event.KeyboardEvent(KeyCode.Tab.ToString())))
         {
             stringToEdit = stringToEdit.Insert(editor.selectIndex, "\t");
@@ -31,12 +30,13 @@ public class ScriptEditor : MonoBehaviour
 
 
 
-        //Debug.Log(editor.selectIndex);
 
     }
 
-    public void SaveSpell()
+    public void SaveSpell( GameObject spellbook)
     {
+
+
         if (!editable)
             return;
         //get path of file
@@ -48,13 +48,25 @@ public class ScriptEditor : MonoBehaviour
             File.WriteAllText(path, stringToEdit);
         }
 
+        spellbook.GetComponent<SpellBookController>().addSpell(fileName);
+
         if (calback)
             calback.MakeThingDo();
+
+        clearBox();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void clearBox()
     {
+        fileName = "New Spell";
+        stringToEdit = "";
+
+}
+
+// Start is called before the first frame update
+void Start()
+    {
+        clearBox();
     }
 
     // Update is called once per frame

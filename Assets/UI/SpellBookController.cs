@@ -37,6 +37,14 @@ public class SpellBookController : MonoBehaviour
             
     }
 
+    public void addSpell(string spellname)
+    {
+        GameObject temp = Spellbook.transform.GetChild(Spells.Count).gameObject;
+        GameObject text = temp.transform.GetChild(1).gameObject;
+        text.GetComponent<UnityEngine.UI.Text>().text = spellname;
+        Spells.Add(spellname);
+    }
+
     // Update is called once per frame
     void Update()
     {
