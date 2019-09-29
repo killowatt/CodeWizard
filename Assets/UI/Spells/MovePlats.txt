@@ -1,0 +1,5 @@
+function DoStuff()
+	for i = 1, 5 do
+	                plats[i].MoveDown()
+               end
+end
