@@ -50,10 +50,9 @@ public class ScriptEditor : MonoBehaviour
             return;
         //get path of file
         string path = Application.dataPath + "/UI/Spells/" + fileName + ".txt";
-
         File.WriteAllText(path, stringToEdit);
-
-        spellbook.GetComponent<SpellBookController>().addSpell(fileName);
+        if (!File.Exists(path))
+            spellbook.GetComponent<SpellBookController>().addSpell(fileName);
 
         if (calback)
             calback.MakeThingDo();
