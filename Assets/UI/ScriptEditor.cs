@@ -41,19 +41,14 @@ public class ScriptEditor : MonoBehaviour
             return;
         //get path of file
         string path = Application.dataPath + "/UI/Spells/" + fileName + ".txt";
-        Debug.Log(path);
-        //check if file exists
-        if (!File.Exists(path))
-        {
-            File.WriteAllText(path, stringToEdit);
-        }
+
+        File.WriteAllText(path, stringToEdit);
 
         spellbook.GetComponent<SpellBookController>().addSpell(fileName);
 
         if (calback)
             calback.MakeThingDo();
 
-        clearBox();
     }
 
     void clearBox()
@@ -61,12 +56,21 @@ public class ScriptEditor : MonoBehaviour
         fileName = "New Spell";
         stringToEdit = "";
 
-}
+    }
+
+    public void openSpell(UnityEngine.UI.Text spellName)
+    {
+        Debug.Log(spellName.text);
+        string path = Application.dataPath + "/UI/Spells/" + spellName.text + ".txt";
+
+        stringToEdit = File.ReadAllText(path);
+        Debug.Log(stringToEdit);
+        fileName = spellName.text;
+    }
 
 // Start is called before the first frame update
 void Start()
     {
-        clearBox();
     }
 
     // Update is called once per frame

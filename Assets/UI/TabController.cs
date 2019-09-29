@@ -35,6 +35,5 @@ public class TabController : MonoBehaviour
             next_active.SetActive(true);
             activeTab = next_active;
         }
-        Debug.Log("Setting Active Window to " + activeTab.name);
     }
 }
