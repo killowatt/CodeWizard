@@ -12,6 +12,9 @@ public class CodeSystem : MonoBehaviour
 
     public bool valid = true;
 
+
+    public bool DoNotEdit = false;
+
     public CodeSystem[] InputSystems;
 
     // Start is called before the first frame update

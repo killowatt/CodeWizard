@@ -32,6 +32,8 @@ public class Interactable : MonoBehaviour
 
         CodeSystem d = GetComponentInChildren<CodeSystem>();
 
+        editor.editable = !d.DoNotEdit;
+
         if (!ui.activeSelf)
             d.CurrentScript = editor.stringToEdit;
         else
