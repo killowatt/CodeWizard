@@ -21,8 +21,35 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Interact()
     {
+        GameObject ui = GameObject.Find("UI").transform.GetChild(0).gameObject; // epic
+        ui.SetActive(!ui.activeSelf);
+
+        GameObject edo = ui.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        ScriptEditor editor = edo.GetComponent<ScriptEditor>();
+
+        editor.calback = this;
+
         Door d = GetComponentInChildren<Door>();
-        //d.ToggleOpened();
+
+        if (!ui.activeSelf)
+            d.CurrentScript = editor.stringToEdit;
+        else
+            editor.stringToEdit = d.CurrentScript;
+
+
+        Debug.Log("Interact/UI");
+    }
+    public void MakeThingDo()
+    {
+        GameObject ui = GameObject.Find("UI").transform.GetChild(0).gameObject; // epic
+        GameObject edo = ui.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        ScriptEditor editor = edo.GetComponent<ScriptEditor>();
+
+        Door d = GetComponentInChildren<Door>();
+
+        d.CurrentScript = editor.stringToEdit;
+
+        d.Environment.DoString(d.CurrentScript, null, d.name);
         bool so = d.Environment.Call(d.Environment.Globals["ShouldOpen"]).Boolean;
 
         if (so)
@@ -30,7 +57,6 @@ public class Interactable : MonoBehaviour
             d.Open();
         }
 
-        Debug.Log("You interacted!!");
     }
 
     private void OnTriggerStay2D(Collider2D collision)

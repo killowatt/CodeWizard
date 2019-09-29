@@ -9,6 +9,9 @@ public class ScriptEditor : MonoBehaviour
     public string fileName = "New Spell";
     public string stringToEdit = "";
 
+    //sry connor
+    public Interactable calback;
+
     void OnGUI()
     {
         TextEditor editor = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
@@ -39,7 +42,8 @@ public class ScriptEditor : MonoBehaviour
             File.WriteAllText(path, stringToEdit);
         }
 
-
+        if (calback)
+            calback.MakeThingDo();
     }
 
     // Start is called before the first frame update

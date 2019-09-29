@@ -7,6 +7,7 @@ public class CodeSystem : MonoBehaviour
     public Script Environment;
     [Multiline]
     public string DefaultScript;
+    public string CurrentScript;
     public string ReturningFunction;
 
     public bool valid = true;
@@ -18,15 +19,15 @@ public class CodeSystem : MonoBehaviour
     {
 
             Environment = new Script(CoreModules.None);
-    
 
+        CurrentScript = DefaultScript;
         //InvokeRepeating("RunCode", 1.0f, 1.0f);
     }
     public void DoStuff()
     {
         try
         {
-            DynValue d = Environment.DoString(DefaultScript, null, name);
+            DynValue d = Environment.DoString(CurrentScript, null, name);
 
             Debug.Log(d.Number);
         }
