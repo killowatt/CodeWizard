@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         //rb.AddForce(new Vector2(horizontalInput, 0.0f))
 
         // Jump
-        if (grounded && Input.GetKey(KeyCode.W))
+        if (grounded && Input.GetKeyDown(KeyCode.W))
         {
             grounded = false;
             rb.AddForce(new Vector2(0, 1000.0f));

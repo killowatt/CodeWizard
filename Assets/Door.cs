@@ -1,8 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+using MoonSharp.Interpreter;
+
+[MoonSharpUserData]
+class CodeDoor
+{
+
+    void Open()
+    {
+
+    }
+    void Close()
+    {
+
+    }
+}
+public class Door : CodeSystem
 {
     public BoxCollider2D Collider;
     public CircleCollider2D UsableArea;
@@ -12,11 +28,13 @@ public class Door : MonoBehaviour
 
     public bool IsOpened = false;
 
-    void Open()
+    public GameObject f;
+
+    public void Open()
     {
         IsOpened = true;
     }
-    void Close()
+    public void Close()
     {
         IsOpened = false;
 
@@ -30,16 +48,22 @@ public class Door : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
+
         UsableArea = GetComponent<CircleCollider2D>();
 
 
         ClosedPosition = transform.position;
         OpenedPosition = ClosedPosition + Vector2.up * 2.9f;
 
+        AirFilter z = f.GetComponent<AirFilter>();
+        Environment.Globals["ac"] = z.cd;
 
+        DoStuff();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -60,7 +84,4 @@ public class Door : MonoBehaviour
     }
 
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-    }
 }

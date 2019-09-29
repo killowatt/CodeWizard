@@ -22,7 +22,13 @@ public class Interactable : MonoBehaviour
     void Interact()
     {
         Door d = GetComponentInChildren<Door>();
-        d.ToggleOpened();
+        //d.ToggleOpened();
+        bool so = d.Environment.Call(d.Environment.Globals["ShouldOpen"]).Boolean;
+
+        if (so)
+        {
+            d.Open();
+        }
 
         Debug.Log("You interacted!!");
     }
