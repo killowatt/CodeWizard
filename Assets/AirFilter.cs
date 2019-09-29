@@ -16,6 +16,8 @@ public class AirFilterCode
     {
         if (!Parent.valid) return DefaultValue;
 
+        Parent.DoStuff(); // force rerun;
+
         DynValue d = Parent.Environment.Call(
             Parent.Environment.Globals[Parent.ReturningFunction]);
 

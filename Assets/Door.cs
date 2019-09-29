@@ -47,6 +47,18 @@ public class Door : CodeSystem
             Open();
     }
 
+    public override void Reeval()
+    {
+        DoStuff();
+
+        bool so = Environment.Call(Environment.Globals["ShouldOpen"]).Boolean;
+        if (so)
+            Open();
+        if (!so)
+            Close();
+
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {

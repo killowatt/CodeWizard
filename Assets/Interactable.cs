@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     //public BoxCollider2D InteractionArea;
+    //public GameObject ToManipulate;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class Interactable : MonoBehaviour
 
         editor.calback = this;
 
-        Door d = GetComponentInChildren<Door>();
+        CodeSystem d = GetComponentInChildren<CodeSystem>();
 
         if (!ui.activeSelf)
             d.CurrentScript = editor.stringToEdit;
@@ -45,17 +46,14 @@ public class Interactable : MonoBehaviour
         GameObject edo = ui.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
         ScriptEditor editor = edo.GetComponent<ScriptEditor>();
 
-        Door d = GetComponentInChildren<Door>();
+        CodeSystem d = GetComponentInChildren<CodeSystem>();
+        //CodeSystem d = ToManipulate.GetComponent<CodeSystem>();
+        //Door d = GetComponentInChildren<Door>();
 
         d.CurrentScript = editor.stringToEdit;
 
-        d.Environment.DoString(d.CurrentScript, null, d.name);
-        bool so = d.Environment.Call(d.Environment.Globals["ShouldOpen"]).Boolean;
-
-        if (so)
-        {
-            d.Open();
-        }
+        //d.Environment.DoString(d.CurrentScript, null, d.name);
+        d.Reeval();
 
     }
 
@@ -64,7 +62,7 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
         {
             Interact();
-            Debug.Log("Open!");
+            //Debug.Log("Open!");
         }
     }
 }

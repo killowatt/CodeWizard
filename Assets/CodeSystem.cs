@@ -43,6 +43,7 @@ public class CodeSystem : MonoBehaviour
         }
 
     }
+    public virtual void Reeval() {  }
 
     // Update is called once per frame
     void Update()
