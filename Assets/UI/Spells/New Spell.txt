@@ -1,2 +1,3 @@
-Hello World
-I've got 2 lines...
+function ShouldOpen()
+	return ac.CheckAir()
+end
